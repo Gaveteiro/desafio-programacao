@@ -24,20 +24,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const app = new Vue({
         el: '#app',
         components,
+        mounted() {
+            axios.get('/movies.json').then((response) => {
+                this.movies = response.data;
+            })
+        },
         data() {
             return {
-                movies: [
-                    { id: 1, title: "Título do filme 1" },
-                    { id: 2, title: "Título do filme 2" },
-                    { id: 3, title: "Título do filme 3" },
-                    { id: 4, title: "Título do filme 4" },
-                    { id: 5, title: "Título do filme 5" },
-                    { id: 6, title: "Título do filme 6" },
-                ]
+                movies: null
             }
-        },
-        mounted() {
-            console.log(this.movies);
         }
     });
 })

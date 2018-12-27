@@ -3,7 +3,10 @@
         <h2 class="movie-app__title">
             Lista de Novos Filmes
         </h2>
-        <div class="movie-app__movie-list">
+        <div class="movie-app__movie-list" v-if="movies.length === 0">
+            <h2>Nenhum filme ainda</h2>
+        </div>
+        <div class="movie-app__movie-list" v-else>
             <movie v-for="movie in movies" :key="movie.id" :movie="movie"></movie>
         </div>
     </div>
