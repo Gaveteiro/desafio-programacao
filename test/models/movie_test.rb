@@ -7,7 +7,6 @@ class MovieTest < ActiveSupport::TestCase
 
     @movie.attributes = {
       title: "Filme exemplo",
-      overview: "Filme exemplo para teste",
       original_language: "pt-BR"
     }
 
