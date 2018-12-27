@@ -11,10 +11,10 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
-gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'babel-transpiler'
 gem 'vuejs-rails'
+gem 'rest-client'
 
 # gem 'redis', '~> 4.0'
 

@@ -1,0 +1,38 @@
+// Place all the styles related to the Movies controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+//= require application.scss
+
+@import "application";
+
+.main-container {
+    display: flex;
+    align-items: center;
+    background-color: black;
+    width: 100%;
+    height: 100%;
+}
+
+.movie-app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 960px;
+    width: 70%;
+    margin: 25px auto;
+
+    @include e(title) {
+        size: 1.8em;
+        font-family: Ubuntu;
+        align-self: center;
+        color: white;
+    }
+
+    @include e(movie-list) {
+        border-radius: 5px;
+        width: 100%;
+        height: 800px;
+        background-color: white;
+    }
+}

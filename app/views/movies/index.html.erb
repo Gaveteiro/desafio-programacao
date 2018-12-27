@@ -1,1 +1,23 @@
-<h2>lol</h2>
+<div class="main-container">
+    <div class="movie-app">
+        <h2 class="movie-app__title">
+            Lista de Novos Filmes
+        </h2>
+        <div class="movie-app__movie-list">
+            <movie v-for="movie in movies" :key="movie.id" :movie="movie"></movie>
+        </div>
+    </div>
+</div>
+
+<%= content_for :after_content do %>
+<script id="movie-template" type="text/x-template">
+    <div class="movie">
+        <div class="movie__info">
+            <span class="movie__title">{{ movie.title }}</span>
+        </div>
+        <div class="movie__poster">
+            <img src="" alt="Poster para o filme não disponível">
+        </div>
+    </div>
+</script>
+<% end %>

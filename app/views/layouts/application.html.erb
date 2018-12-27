@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DesafioProgramacao2</title>
+    <title>Desafio de Programação -- Filmes</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= stylesheet_link_tag 'bootstrap.min' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <%= javascript_include_tag 'application' %>
 
+    <%= javascript_include_tag "#{controller_path}_#{action_name}" %>
+    <%= stylesheet_link_tag "#{controller_path}_#{action_name}" %>
+  </head>
   <body>
-    <%= yield %>
+    <div id="app">
+        <%= yield %>
+    </div>
+
+    <%= yield :after_content %>
   </body>
 </html>

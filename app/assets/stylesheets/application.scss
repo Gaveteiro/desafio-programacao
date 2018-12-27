@@ -13,3 +13,33 @@
  *= require_tree .
  *= require_self
  */
+
+//FONTS
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700');
+//END FONTS
+
+//MIXINS TO HELP DEVELOPMENT
+
+ @mixin e($el) {
+     @at-root &__#{$el} {
+         @content;
+     }
+ }
+
+ @mixin m($mod) {
+     @at-root &--#{$mod} {
+         @content;
+     }
+ }
+
+//END OF MIXINS
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+}

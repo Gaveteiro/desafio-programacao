@@ -1,7 +1,32 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# Popular banco de dados os os filmes
+
+require 'rest-client'
+
+# Obter todos os gêneros primeiro
+
+genres = JSON.parse(RestClient.get('https://api.themoviedb.org/3/genre/movie/list', params: {
+  'api_key': '5e5d53209ed6dc1be90cea6823b24335',
+  language: 'pt-BR',
+}).body)
+
+genres = genres['genres'].map { |genre| genre['genre_id'] = genre['id']; genre.delete('id'); genre }
+
+Genre.create!(genres)
+
+print "Gêneros criados"
+
+# Consultar as 10 primeiras páginas
+
+10.times do |i|
+  api_result = JSON.parse(RestClient.get('https://api.themoviedb.org/3/movie/upcoming', params: {
+    api_key: '5e5d53209ed6dc1be90cea6823b24335',
+    language: 'pt-BR',
+    page: i.to_s
+  }).body)
+
+  print api_result
+
+  api_result['results'].each do |movie|
+
+  end
+end

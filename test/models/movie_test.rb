@@ -1,10 +1,6 @@
 require 'test_helper'
 
 class MovieTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
-
   test "test movie mandatory params" do
     @movie = Movie.new
     assert_not @movie.valid?
