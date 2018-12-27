@@ -3,11 +3,37 @@
         <h2 class="movie-app__title">
             Lista de Novos Filmes
         </h2>
-        <div class="movie-app__movie-list" v-if="movies.length === 0">
+        <div class="movie-app__movie-list" v-if="movies == null">
+            <div class="movie-app__movie-list-loading">
+                <%= render partial: 'svg/loading_spinner' %>
+            </div>
+        </div>
+        <div class="movie-app__movie-list" v-if="movies && movies.length == 0">
             <h2>Nenhum filme ainda</h2>
         </div>
-        <div class="movie-app__movie-list" v-else>
-            <movie v-for="movie in movies" :key="movie.id" :movie="movie"></movie>
+        <div class="movie-app__movie-list" v-if="movies && movies.length > 0">
+            <div class="movie-app__filter-container">
+                <div class="movie-app__filter"></div>
+            </div>
+            <movie v-for="movie in moviesInCurrPage" :key="movie.id" :movie="movie"></movie>
+            <div class="movie-app__pager-container" v-if="movies && movies.length > 0">
+                <div class="pager">
+                    <div class="pager__back-arrow" @click="previousPage()">
+                        <%= render 'svg/arrow' %>
+                    </div>
+                    <div class="pager__page"
+                        :class="{
+                            'pager__page--active': (page === currPage)
+                        }"
+                        v-for="page in currPageRange"
+                        v-text="page"
+                        @click="goToPage(page)">
+                    </div>
+                    <div class="pager__forward-arrow" @click="nextPage()">
+                        <%= render 'svg/arrow' %>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -16,10 +42,29 @@
 <script id="movie-template" type="text/x-template">
     <div class="movie">
         <div class="movie__info">
-            <span class="movie__title">{{ movie.title }}</span>
+            <span class="movie__title" v-text="movie.title"></span>
+            <div class="movie__overview_and_vote-average">
+                <p class="movie__overview" v-if="overview" v-text="overview"></p>
+                <p class="movie__overview movie__overview--no-overview" v-else>
+                    Filme sem sinópse por enquanto.
+                </p>
+                <div class="movie__vote-average">
+                    <p class="movie__vote-average-label">Avaliação Média:</p>
+                    <div class="movie__vote-average-icon-and-value">
+                        <div class="movie__vote-average-icon">
+                            <%= render 'svg/star' %>
+                        </div>
+                        <span class="movie__vote-average-value" v-text="movie.vote_average">
+                        </span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="movie__poster">
-            <img src="" alt="Poster para o filme não disponível">
+        <div class="movie__poster" v-if="movie.poster_path">
+            <img :src="posterPath" alt="Poster para o filme não disponível">
+        </div>
+        <div class="movie__poster movie__poster--no-poster" v-else>
+            Filme sem poster por enquanto
         </div>
     </div>
 </script>

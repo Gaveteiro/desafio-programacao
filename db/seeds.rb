@@ -5,7 +5,7 @@ require 'rest-client'
 # Obter todos os gêneros primeiro
 
 genres = JSON.parse(RestClient.get('https://api.themoviedb.org/3/genre/movie/list', params: {
-  'api_key': '5e5d53209ed6dc1be90cea6823b24335',
+  api_key: '5e5d53209ed6dc1be90cea6823b24335',
   language: 'pt-BR',
 }).body)
 

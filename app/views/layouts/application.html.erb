@@ -9,7 +9,6 @@
     <%= stylesheet_link_tag 'bootstrap.min' %>
     <%= javascript_include_tag 'application' %>
 
-    <%= javascript_include_tag "#{controller_path}_#{action_name}" %>
     <%= stylesheet_link_tag "#{controller_path}_#{action_name}" %>
 
     <%= javascript_include_tag "https://unpkg.com/axios/dist/axios.min.js" %>
@@ -20,5 +19,7 @@
     </div>
 
     <%= yield :after_content %>
+
+    <%= javascript_include_tag "#{controller_path}_#{action_name}" %>
   </body>
 </html>

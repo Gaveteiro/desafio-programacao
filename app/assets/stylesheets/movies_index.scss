@@ -2,14 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-//= require application.scss
-
 @import "application";
+
+body {
+    background-color: black;
+}
 
 .main-container {
     display: flex;
     align-items: center;
-    background-color: black;
     width: 100%;
     height: 100%;
 }
@@ -33,5 +34,162 @@
         border-radius: 5px;
         width: 100%;
         background-color: white;
+    }
+
+    @include e(movie-list-loading) {
+        margin: 0 auto;
+        width: fit-content;
+    }
+
+    @include e(pager-container) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin: 15px;
+    }
+}
+
+.pager {
+    display: flex;
+    align-items: center;
+
+    @include e(back-arrow) {
+        width: 30px;
+        height: 30px;
+        margin: 2px;
+        transform: rotateZ(-180deg);
+        cursor: pointer;
+
+        > svg {
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+    @include e(forward-arrow) {
+        width: 30px;
+        height: 30px;
+        margin: 2px;
+        cursor: pointer;
+
+        > svg {
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+    @include e(page) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        margin: 2px;
+        background-color: grey;
+        color: white;
+        cursor: pointer;
+        font-family: Ubuntu;
+
+        @include m(active) {
+            background-color: black;
+        }
+    }
+}
+
+.movie {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+
+    @include e(info) {
+        flex-grow: 1;
+    }
+
+    @include e(title) {
+        display: inline-block;
+        font-family: Ubuntu;
+        font-size: 2.4em;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-align: center;
+        height: 30px;
+        width: 100%;
+    }
+
+    @include e(overview_and_vote-average) {
+        display: flex;
+        align-items: center;
+    }
+
+    @include e(overview) {
+        margin-top: 15px;
+        font-family: Ubuntu;
+        font-size: 1.2em;
+        line-height: 1.2;
+        width: 75%;
+
+        @include m(no-overview) {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.9;
+        }
+    }
+
+    @include e(vote-average) {
+        width: 35%;
+        align-self: flex-start;
+        margin-top: 18px;
+    }
+
+    @include e(vote-average-icon-and-value) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    @include e(vote-average-label) {
+        font-family: Ubuntu;
+        text-align: center;
+        line-height: 1;
+        font-size: 1.2em;
+    }
+
+    @include e(vote-average-icon) {
+        width: 60px;
+        height: 60px;
+
+        > svg {
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+    @include e(vote-average-value) {
+        font-size: 2.4em;
+        margin-left: 10px;
+        font-family: Ubuntu;
+    }
+
+    @include e(poster) {
+        @include m(no-poster) {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            min-width: 185px;
+            max-width: 185px;
+            height: 300px;
+            background-color: black;
+            color: white;
+            font-family: Ubuntu;
+            font-weight: bold;
+            font-size: 1.1em;
+            user-select: none;
+        }
     }
 }
