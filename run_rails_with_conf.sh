@@ -1,0 +1,3 @@
+source './conf.sh'
+
+rails $@

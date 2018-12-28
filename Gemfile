@@ -20,6 +20,8 @@ gem 'autoprefixer-rails'
 gem 'activeadmin'
 gem 'devise'
 
+gem 'pg'
+
 # gem 'redis', '~> 4.0'
 
 # gem 'bcrypt', '~> 3.1.7'
@@ -31,7 +33,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :production do
   gem 'unicorn'
-  gem 'pg'
 end
 
 group :development, :test do
