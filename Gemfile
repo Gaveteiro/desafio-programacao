@@ -17,6 +17,8 @@ gem 'vuejs-rails'
 gem 'rest-client'
 gem 'active_model_serializers', github: 'rails-api/active_model_serializers', branch: '0-10-stable'
 gem 'autoprefixer-rails'
+gem 'activeadmin'
+gem 'devise'
 
 # gem 'redis', '~> 4.0'
 
