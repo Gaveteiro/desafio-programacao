@@ -13,7 +13,23 @@
         </div>
         <div class="movie-app__movie-list" v-if="movies && movies.length > 0">
             <div class="movie-app__filter-container">
-                <div class="movie-app__filter"></div>
+                <div class="movie-app__filter">
+                    <div class="movie-app__filter-curr" @click="showFilterDropdown = !showFilterDropdown">
+                        <span class="movie-app__filter-curr-label" v-text="currFilter.name"></span>
+                        <div class="movie-app__filter-curr-arrow">
+                            <%= render 'svg/arrow' %>
+                        </div>
+                    </div>
+                    <transition name="fade">
+                        <div class="movie-app__filter-dropdown" v-show="showFilterDropdown">
+                            <div class="movie-app__filter-dropdown-item"
+                                v-for="genre in genres"
+                                v-text="genre.name"
+                                @click="setFilter(genre.genre_id, genre.name)">
+                            </div>
+                        </div>
+                    </transition>
+                </div>
             </div>
             <movie v-for="movie in moviesInCurrPage" :key="movie.id" :movie="movie"></movie>
             <div class="movie-app__pager-container" v-if="movies && movies.length > 0">

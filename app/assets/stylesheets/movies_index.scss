@@ -48,6 +48,65 @@ body {
         width: 100%;
         margin: 15px;
     }
+
+    @include e(filter-container) {
+        width: 100%;
+        margin: 15px 10px;
+    }
+
+    @include e(filter) {
+        position: relative;
+    }
+
+    @include e(filter-curr) {
+        display: flex;
+        border: 1px solid rgba(0, 0, 0, 0.6);
+        border-radius: 3px;
+        width: fit-content;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    @include e(filter-curr-label) {
+        display: inline-block;
+        margin: 5px;
+        font-family: Ubuntu;
+    }
+
+    @include e(filter-curr-arrow) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 25px;
+        height: 25px;
+        transform: rotate(90deg);
+        margin-right: 5px;
+
+        > svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    @include e(filter-dropdown) {
+        position: absolute;
+        top: 101%;
+        left: 0;
+        width: fit-content;
+        border: 1px solid black;
+        border-radius: 3px;
+        background-color: white;
+    }
+
+    @include e(filter-dropdown-item) {
+        padding: 5px 2px;
+        border-bottom: 1px solid black;
+        cursor: pointer;
+
+        &:last-of-type {
+            border-bottom: none;
+        }
+    }
 }
 
 .pager {

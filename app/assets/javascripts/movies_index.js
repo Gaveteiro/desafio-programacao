@@ -2,7 +2,7 @@
 
 function range(start, end) {
     const retval = [];
-    for (let i = start; i < end; i++) {
+    for (let i = start; i <= end; i++) {
         retval.push(i);
     }
     return retval;
@@ -54,21 +54,21 @@ document.addEventListener('DOMContentLoaded', () => {
         components,
         computed: {
             moviesInCurrPage() {
-                return this.movies.slice((this.currPage - 1) * 20, this.currPage * 20);
+                return this.filteredMovies.slice((this.currPage - 1) * 20, this.currPage * 20);
             },
             currPageRange() {
                 if(this.currPage < 6) {
-                    return range(1, 10)
+                    return range(1, Math.min(this.maxPage, 10))
                 } else if(this.currPage + 4 > this.maxPage) {
-                    return range(this.currPage - 4, this.maxPage + 1)
+                    return range(this.currPage - 4, this.maxPage)
                 } else {
-                    return range(this.currPage - 4, this.currPage + 5);
+                    return range(this.currPage - 4, this.currPage + 4);
                 }
             },
             maxPage() {
                 if(this.movies) {
-                    const remainderPage = (this.movies.length % 20) > 1;
-                    let maxPage = Math.floor(this.movies.length / 20);
+                    const remainderPage = (this.filteredMovies.length % 20) > 1;
+                    let maxPage = Math.floor(this.filteredMovies.length / 20);
 
                     if(remainderPage) {
                         maxPage += 1;
@@ -78,6 +78,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 return 0;
+            },
+            filteredMovies() {
+                if(this.currFilter.id == 0) {
+                    return this.movies;
+                }
+
+                return this.movies.filter((m) => {
+                    return m.genre_ids.some((g) => {
+                        return g == this.currFilter.id
+                    });
+                });
             }
         },
         methods: {
@@ -103,17 +114,37 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.currPage += 1;
 
                 setTimeout(scrollToTop, 300);
+            },
+            setFilter(id, name) {
+                this.currFilter.id = id;
+                this.currFilter.name = name;
+                this.currPage = 1;
+
+                this.$nextTick(() => {
+                    this.showFilterDropdown = false;
+                });
             }
         },
         mounted() {
             axios.get('/movies.json').then((response) => {
                 this.movies = response.data;
             });
+
+            axios.get('/genres.json').then((response) => {
+                this.genres = response.data;
+                this.genres.unshift({ id: 0, name: "Todos", genre_id: 0 })
+            });
         },
         data() {
             return {
                 movies: null,
-                currPage: 1
+                genres: [],
+                showFilterDropdown: false,
+                currPage: 1,
+                currFilter: {
+                    id: 0,
+                    name: "Todos"
+                }
             }
         }
     });

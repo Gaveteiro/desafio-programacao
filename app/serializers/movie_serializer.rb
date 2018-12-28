@@ -11,4 +11,8 @@ class MovieSerializer < ActiveModel::Serializer
     :vote_count,
     :video,
     :vote_average
+
+  attribute :genre_ids do
+    object.genres.map { |g| g.genre_id }
+  end
 end
