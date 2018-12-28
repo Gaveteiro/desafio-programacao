@@ -107,6 +107,12 @@ body {
             border-bottom: none;
         }
     }
+
+    @include e(movie-list-no-movie) {
+        text-align: center;
+        width: 100%;
+        margin: 15px 0;
+    }
 }
 
 .pager {
