@@ -16,6 +16,8 @@ gem 'babel-transpiler'
 gem 'vuejs-rails'
 gem 'rest-client'
 gem 'active_model_serializers', github: 'rails-api/active_model_serializers', branch: '0-10-stable'
+gem 'activeadmin'
+gem 'devise'
 
 # gem 'redis', '~> 4.0'
 
