@@ -1,0 +1,4 @@
+# Configure aqui sua chave de api
+api:
+    api_key: "5e5d53209ed6dc1be90cea6823b24335"
+    language: "pt-BR"

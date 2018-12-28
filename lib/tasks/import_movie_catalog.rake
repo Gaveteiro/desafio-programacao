@@ -12,8 +12,8 @@ task :import_movie_catalog => :environment do
   # Obter todos os gêneros primeiro
 
   genres = JSON.parse(RestClient.get('https://api.themoviedb.org/3/genre/movie/list', params: {
-    api_key: '5e5d53209ed6dc1be90cea6823b24335',
-    language: 'pt-BR',
+    api_key: Rails.configuration.x.api_key,
+    language: Rails.configuration.x.language,
   }).body)
 
   genres = genres['genres'].map { |genre| genre['genre_id'] = genre['id']; genre.delete('id'); genre }
@@ -26,8 +26,8 @@ task :import_movie_catalog => :environment do
 
   10.times do |i|
     api_result = JSON.parse(RestClient.get('https://api.themoviedb.org/3/movie/upcoming', params: {
-      api_key: '5e5d53209ed6dc1be90cea6823b24335',
-      language: 'pt-BR',
+      api_key: Rails.configuration.x.api_key,
+      language: Rails.configuration.x.language,
       page: (i + 1).to_s
     }).body)
 
