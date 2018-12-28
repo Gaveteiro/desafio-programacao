@@ -35,4 +35,5 @@ print "Gêneros criados\n"
 
   print "Página #{i + 1} percorrida\n"
 end
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
+AdminUser.create!(email: 'admin@gaveteiro.com', password: 'gaveteiroadmin', password_confirmation: 'gaveteiroadmin')
