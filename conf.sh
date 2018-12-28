@@ -12,3 +12,4 @@ export DB_USERNAME="desafio_prog"
 #######################
 # CONFIGURATION END
 #######################
+export DB_PASSWD="senhadodb"
