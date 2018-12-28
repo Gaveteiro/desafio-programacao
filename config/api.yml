@@ -1,0 +1,4 @@
+# Configure aqui sua chave de api
+api:
+    api_key: <%= ENV['API_KEY'] %>
+    language: <%= ENV['LANGUAGE'] %>

@@ -1,4 +1,4 @@
-API_CONFIG = YAML.load_file("#{Rails.root}/config/api.yaml")
+API_CONFIG = YAML.load(ERB.new(File.read("#{Rails.root}/config/api.yml")).result)
 
 api_key = API_CONFIG['api']['api_key']
 language = API_CONFIG['api']['language']
