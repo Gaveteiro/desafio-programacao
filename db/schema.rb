@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_10_183533) do
+ActiveRecord::Schema.define(version: 2019_02_11_105918) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,13 @@ ActiveRecord::Schema.define(version: 2019_02_10_183533) do
     t.string "original_title"
     t.string "original_language"
     t.string "title"
+    t.float "popularity"
+    t.boolean "adult"
+    t.string "poster_path"
+    t.string "overview"
+    t.string "backdrop_path"
     t.float "vote_average"
+    t.integer "vote_count"
   end
 
 end

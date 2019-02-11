@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
 
+
+#arquivo criado pois eu não tinha entendido como salvar usando um arquivo externamennte ao rails
+# isso agora está sendo feito pelo db_import.rake
 require_relative 'movies_api.rb'
 require 'pg'
 
@@ -47,13 +50,4 @@ class ImportaGeneros
     }
 
   end
-
-
 end
-
-importa = ImportaGeneros.new
-#importa.insertMovies
-#importa.insertMovies
-importa.clearing_tables
-importa.insertMovies
-importa.insertGenres
