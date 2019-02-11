@@ -21,7 +21,7 @@ class ImportaGeneros
     conn = PG::Connection.open(:dbname => 'gaveteiro_development')
     conn.exec_params("DELETE FROM genres;")
     conn.exec_params("DELETE FROM movies;")
-    conn.exec_params("DELETE FROM movies_genres;")
+    conn.exec_params("DELETE FROM genres_movies;")
   end
 
   def insertGenres
@@ -39,7 +39,7 @@ class ImportaGeneros
       #puts movie.title
       #movie.id_genre.each{ |id| print [movie.id, id]}
       movie.id_genre.each{
-         |id| conn.exec_params("INSERT INTO movies_genres (movie_id,genre_id) VALUES ($1,$2)", [movie.id, id])
+         |id| conn.exec_params("INSERT INTO genres_movies (movie_id,genre_id) VALUES ($1,$2)", [movie.id, id])
       }
     }
     movies.each{ |movie|

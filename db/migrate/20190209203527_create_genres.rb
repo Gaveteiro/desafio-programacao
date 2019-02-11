@@ -1,9 +1,8 @@
 class CreateGenres < ActiveRecord::Migration[5.2]
   def change
-    create_table :genres, id: false do |t|
-      t.column :id,         :integer,   null: false
+    create_table :genres, primary_key: :genre_id do |t|
       t.column :name,       :string,    null: false
-      t.column :created_at, :datetime,  default: -> {'CURRENT_TIMESTAMP'}
+      t.column :created_at, :datetime,  raw_default: 'NOW()'
     end
   end
 end

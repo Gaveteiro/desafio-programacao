@@ -10,31 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_10_205539) do
+ActiveRecord::Schema.define(version: 2019_02_10_183533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "genres", id: false, force: :cascade do |t|
-    t.integer "genre_id", null: false
+  create_table "genres", primary_key: "genre_id", force: :cascade do |t|
     t.string "name", null: false
-    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }
+    t.datetime "created_at"
   end
 
-  create_table "movies", id: false, force: :cascade do |t|
-    t.integer "movie_id", null: false
-    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }
+  create_table "genres_movies", id: false, force: :cascade do |t|
+    t.bigint "movie_id"
+    t.bigint "genre_id"
+    t.index ["genre_id"], name: "index_genres_movies_on_genre_id"
+    t.index ["movie_id"], name: "index_genres_movies_on_movie_id"
+  end
+
+  create_table "movies", primary_key: "movie_id", force: :cascade do |t|
+    t.datetime "created_at"
     t.string "original_title"
     t.string "original_language"
     t.string "title"
     t.float "vote_average"
-  end
-
-  create_table "movies_genres", id: false, force: :cascade do |t|
-    t.bigint "movie_id"
-    t.bigint "genre_id"
-    t.index ["genre_id"], name: "index_movies_genres_on_genre_id"
-    t.index ["movie_id"], name: "index_movies_genres_on_movie_id"
   end
 
 end
