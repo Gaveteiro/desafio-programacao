@@ -5,9 +5,9 @@ class MoviesController < ApplicationController
     if params[:genre] and params[:genre][:genre_id] and params[:genre][:genre_id] != ""
       #puts "*"+params[:genre][:genre_id]+"*"
       @selected_genre_id = params[:genre][:genre_id]
-      @movies = Movie.joins(:genres).where('genres.genre_id = ?', "#{params[:genre][:genre_id]}").page(params[:page]).per(5)
+      @movies = Movie.joins(:genres).where('genres.genre_id = ?', "#{params[:genre][:genre_id]}").page(params[:page]).per(10)
     else
-      @movies = Movie.all.page(params[:page]).per(5)
+      @movies = Movie.all.page(params[:page]).per(10)
     end
 
     @genres = Genre.all
