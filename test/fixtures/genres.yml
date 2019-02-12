@@ -4,8 +4,12 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+one:
+ genre_id: 1
+ name: ação
+two:
+ genre_id: 2
+ name: comédia
+three:
+ genre_id: 3
+ name: suspense
