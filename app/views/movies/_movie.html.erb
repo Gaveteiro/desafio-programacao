@@ -1,0 +1,47 @@
+
+<style>
+.movie{
+  display: inline-block;
+  width: 500px;
+  height:280px;
+  margin-bottom:30px;
+  margin-left:30px;
+}
+.shadow{
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1)
+}
+.overview{
+  font-weight:150;
+  font-size: 12px;
+  overflow: hidden;
+  width:250px;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+}
+.title{
+  font-weight:900;
+  font-size: 14px;
+}
+</style>
+
+<div class="movie" >
+    <table class = "table shadow"  >
+      <tr>
+        <td><img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/<%= movie.poster_path %>" alt="Sem Poster" height="278" width="185"></td>
+          <td>
+            <table >
+              <tr>
+                <td><span class="title" ><%= movie.title %></span></td>
+              </tr>
+              <tr>
+                <td><span class="overview" ><%= movie.overview %> </span></td>
+              </tr>
+              <tr>
+                <td><% if movie.adult? %> <button type="button" class="btn btn-danger">+18</button> <% end %></td>
+              </tr>
+            </table>
+          </td>
+      </tr>
+    </table>
+</div>
