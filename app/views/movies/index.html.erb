@@ -6,9 +6,10 @@
 <%= form_tag movies_path, :method => 'get' do %>
   <%= collection_select :genre, :genre_id, Genre.all, :genre_id, :name, {:include_blank=>true,  :selected => @selected_genre_id},{:class => "form-control", :onchange => "this.form.submit()", :style => "width: 60%;"} %>
 <% end %>
+
+
 </div>
-
-
+</span>
 <% if !@movies.any? %>
   <%= render partial: "layouts/warning", locals: {:message => "No movies in this category"}%>
 <% end %>
@@ -17,7 +18,4 @@
         <%= render @movies%>
       <%= paginate @movies %>
     </div>
-</div>
-
-
 </div>

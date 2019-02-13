@@ -42,7 +42,8 @@ class MoviesAPI
                         'backdrop_path' => dt['backdrop_path'],
                            'vote_count' => dt['vote_count'],
                          'vote_average' => dt['vote_average'],
-                           'popularity' => dt['popularity']
+                           'popularity' => dt['popularity'],
+                         'release_date' => dt['release_date']
 
 
 
