@@ -32,12 +32,12 @@ ActiveRecord::Schema.define(version: 2019_02_13_055300) do
     t.string "original_title"
     t.string "original_language"
     t.string "title"
+    t.float "vote_average"
     t.float "popularity"
     t.boolean "adult"
     t.string "poster_path"
     t.string "overview"
     t.string "backdrop_path"
-    t.float "vote_average"
     t.integer "vote_count"
     t.string "release_date"
   end

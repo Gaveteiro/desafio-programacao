@@ -5,7 +5,6 @@ class AddColumnsToMovie < ActiveRecord::Migration[5.2]
     add_column :movies, :poster_path, :string
     add_column :movies, :overview, :string
     add_column :movies, :backdrop_path, :string
-    add_column :movies, :vote_average, :float
     add_column :movies, :vote_count, :integer
   end
 end
