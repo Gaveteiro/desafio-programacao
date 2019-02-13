@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
 * Ruby version
+2.5.1p57
+* Rails Versions
+5.2.2
 
-* System dependencies
+1 - Instalar PostgreSQL
 
-* Configuration
+2 - Instalar Ruby on Rails
 
-* Database creation
+3 - clonar projeto do github.
 
-* Database initialization
+4 - rodar script: "install.sh" (sh install.sh)
 
-* How to run the test suite
+5 - inicializar o servidor: "rails s"
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
-
-* ...
+O servidor rodará em modo de desenvolvimento, no momento.
