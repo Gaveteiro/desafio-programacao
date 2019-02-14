@@ -16,4 +16,10 @@
 5 - inicializar o servidor: "rails s"
 
 
-O servidor rodará em modo de desenvolvimento, no momento.
+Observações:
+
+1- O servidor só foi configurado para rodar em modo de desenvolvimento.
+
+2 - Não consegui utilizar a pasta correta dos assets/stylesheets para o meu css. Por isso acabei deixando
+no próprio html.
+
